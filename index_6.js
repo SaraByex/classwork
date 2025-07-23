@@ -13,7 +13,7 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.database().ref("users");
 
-// DOM Elements
+// DOM elements
 const signupForm = document.getElementById("signupForm");
 const loginForm = document.getElementById("loginForm");
 const greetingText = document.getElementById("greetingText");
@@ -21,7 +21,7 @@ const birthdayMsg = document.getElementById("birthdayMsg");
 const quoteText = document.getElementById("quoteText");
 const quoteAuthor = document.getElementById("quoteAuthor");
 
-// Fallback quote
+// fallback quote
 const defaultQuote = {
   quote: "Believe you can and you're halfway there.",
   author: "Theodore Roosevelt, 1878"
@@ -38,14 +38,13 @@ function capitalize(name) {
     return firstLetter + rest;
   }
 }
-// date picker and user can also type, no future dates
-const flatpickr("#birthDate", {dateFormat: "m/d/Y", maxDate: "today", allowInput: true, });
 
-// --- SIGN UP ---
+
+// sign up //
 if (signupForm) {
   document.getElementById("btnSignUp").addEventListener("click", function (e) {
     e.preventDefault();
-
+//names to start with upper//
 const firstNameInput = document.getElementById("firstName").value.trim();
 const lastNameInput = document.getElementById("lastName").value.trim();
 
@@ -55,12 +54,12 @@ const lastNameInput = document.getElementById("lastName").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
    
-
+//ensure fully filled form//
     if (!signupForm.checkValidity()) {
       alert("Please fill out the form correctly.");
       return;
     }
-
+//create user in my db//
     auth.createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const uid = userCredential.user.uid;
@@ -82,7 +81,7 @@ const lastNameInput = document.getElementById("lastName").value.trim();
   });
 }
 
-// --- LOGIN ---
+//LOGIN //
 if (loginForm) {
   document.getElementById("btnLogin").addEventListener("click", function (e) {
     e.preventDefault();
@@ -100,12 +99,12 @@ if (loginForm) {
 
     auth.signInWithEmailAndPassword(email, password)
       .then(() => {
-        // clear fields before redirect
+// clear fields before redirect
         emailInput.value = "";
         passwordInput.value = "";
         loginForm.reset();
 
-        // Now redirect
+// Now redirect
         window.location.href = "./message.html";
       })
       .catch((error) => {
@@ -114,7 +113,7 @@ if (loginForm) {
       });
   });
 }
-// --- AUTH & MESSAGE PAGE ---
+// auth and message page**** more info//
 auth.onAuthStateChanged(user => {
   const isLoginPage = path.includes("login.html");
   const isMessagePage = path.includes("message.html");
@@ -136,7 +135,7 @@ auth.onAuthStateChanged(user => {
       const userBDay = formatDate(data.birthDate);
 
       if (greetingText) {
-        greetingText.textContent = `Happy Birthday! ${data.firstName}!`;
+        greetingText.textContent = `Happy Birthday ${data.firstName}!`;
       }
 
       if (birthdayMsg) {
