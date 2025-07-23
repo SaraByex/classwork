@@ -1,0 +1,46 @@
+.text-purple {
+  color: #6f42c1;
+}
+.btn-purple {
+  background-color: #6f42c1;
+  color: rgb(255, 255, 255);
+}
+.btn-purple:hover {
+  background-color: #5a34a1;
+}
+.bg-purple {
+  background-color: #6f42c1 !important;
+}
+#quoteText {
+  color:#5a34a1;
+  font-style: italic;
+  font-weight: bold;
+}
+em {
+  font-size: 12px;
+}
+
+.form-control {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #6a3bc0; 
+  font-size: 1rem;
+  font-family: inherit;
+  color: #4b0082;
+  background-color: #f9f6ff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: #9b59b6;
+  outline: none;
+  box-shadow: 0 0 5px #9b59b6;
+  background-color: #fff;
+  color: #3d1c84;
+}
+
+.btn-primary {
+  background-color: #6a3bc0 !important;
+}
+
