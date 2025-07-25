@@ -190,7 +190,7 @@ const getQuote = async () => {
       author: data.author
     };
   } catch (error) {
-    console.warn("Quote API failed. Using default.");
+    console.log("API failed, using default.");
     return null;
   }
 };
